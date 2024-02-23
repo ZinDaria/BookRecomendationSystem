@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Book Recommendation System</title>
+  <link rel="stylesheet" href="../static/css/style.css"/>     
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
+
+<body style="background-color: white">
+
+   <!-- Grey with black text -->
+  <nav class="navbar navbar-expand-sm navbar-inverse">
+    <div class="container-fluid">
+      <span class="navbar-text"><h1>Book Recommendation System</h1></span>
+      <ul class="navbar-nav justify-content-center">
+        <li class="nav-item" >
+          <a class="nav-link" href="/">Home</a>
+        </li>
+       <li class="nav-item">
+          <a class="nav-link" href="/recommend_book_ui">Recommend by Book</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/recommend_user_ui">Recommend by User</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/search">Search Book</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/tableau">Data Insights</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4 offset-md-4">
+        <h1 class="text-header">Personalized Book Recommendations</h1>
+        <form action="/recommend_user" method="post">
+          <div class="input-group mb-3">
+            <input name="user_id" type="text" class="form-control input-lg" placeholder="Enter User ID" id="inputlg">
+            <div class="input-group-append">
+              <input type="submit" class="btn btn-primary" value="Submit">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+    <!-- Define column for the books -->
+    <div class="col-lg-8 col-md-12">
+      <div class="row">
+        <div class="col-md-12">
+          {% if user_id %}
+          <h2 class="text-black-left">Recommended Books for a User {{ user_id }}</h2>
+          {% else %}
+          <h2 class="text-black"></h2>
+          {% endif %}
+        </div>
+      </div>
+      <!-- Book cards -->
+      {% if data %}
+      <div class="row">
+        {% for i in data %}
+        <div class="col-lg-3 col-md-4 col-sm-6">
+          <div class="card">
+            <div class="card-body">
+              <img class="card-img-top" src="{{ i['Image-URL-M']  }}" alt="Image not available">
+              <h2 class="text-black">{{ i['Book-Title'] }}</h2>
+              <h4 class="text-grey">Author: {{ i['Book-Author'] }}</h4>
+              <h4 class="text-grey">Publisher: {{ i['Publisher'] }}</h4>
+
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Column with user history table -->
+    <div class="col-lg-4 col-md-12">
+      <!-- User History Header -->
+      {% if user_id %}
+      <h2 class="text-black-left">User History (Top 10)</h2>
+      {% else %}
+      <h2 class="text-black-left"></h2>
+      {% endif %}
+
+      {% if datau %}
+      <table class="table">
+        <!-- table header-->
+        <thead>
+          <tr>
+            <th>Book Title</th>
+            <th>Rating</th>
+            <th>Author</th>
+            <th>Publisher</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- table rows-->
+          {% for item in datau %}
+          <tr>
+            <td>{{ item['Book-Title'] }}</td>
+            <td>{{ item['Book-Rating'] }}</td>
+            <td>{{ item['Book-Author'] }}</td>
+            <td>{{ item['Publisher'] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
+
+  </div>
+  </div>
+
+</body>
+
+</html>
