@@ -104,9 +104,10 @@ It's observed that while a tuned SVD Funk improved results, the most accurate pr
     - HTML for areating frontend templates that Flask renders and serves to the client's browser
     - CSS for styling web pages
 6. Creation a dashboard visualizations
-![image](https://github.com/ZinDaria/BookRecomendationSystem/assets/141193973/f714357e-4415-4d16-9d67-ac9896c97cfd)
-![image](https://github.com/ZinDaria/BookRecomendationSystem/assets/141193973/e016cb96-dad9-451c-935f-9b5a38ea1a41)
-![image](https://github.com/ZinDaria/BookRecomendationSystem/assets/141193973/e95f5ecd-8dd0-4e7f-9a2d-2c6a55fbbb7b)
+![image](https://github.com/ZinDaria/BookRecomendationSystem/assets/141193973/c776b965-9122-45fd-9125-3abf24f77665)
+![image](https://github.com/ZinDaria/BookRecomendationSystem/assets/141193973/9bfa4ece-1ec4-4abb-bba9-4813c9535f8f)
+![image](https://github.com/ZinDaria/BookRecomendationSystem/assets/141193973/a5a7b8b7-e1f9-4fa0-80cd-197f8ef41e2c)
+
 
 
 ### Tools, Languages and Libraries
